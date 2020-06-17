@@ -19,6 +19,8 @@ public class FindByIdAction implements UserAction {
         Item item = tracker.findById(id);
         if (item != null) {
             out.println(item.getName());
+        } else {
+            System.out.println("Введен неправильный id.");
         }
         return true;
     }

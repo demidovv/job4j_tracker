@@ -21,6 +21,8 @@ public class FindByNameAction implements UserAction {
             for (int i = 0; i < find.length; i++) {
                 out.println(i + 1 + find[i].toString());
             }
+        } else {
+            System.out.println("Имя не найдено.");
         }
         return true;
     }
