@@ -16,6 +16,7 @@ public class StubOutput implements Output {
 
     @Override
     public String toString() {
+
         return buffer.toString();
     }
 }
