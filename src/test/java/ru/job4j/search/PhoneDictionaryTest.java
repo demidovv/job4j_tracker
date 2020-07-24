@@ -13,7 +13,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("Petgr");
+        ArrayList<Person> persons = phones.find("3487");
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
     }
 }
