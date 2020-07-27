@@ -1,7 +1,5 @@
 package ru.job4j.search;
 
-import ru.job4j.ex.UserInputException;
-
 import java.util.ArrayList;
 
 public class PhoneDictionary {
@@ -26,11 +24,6 @@ public class PhoneDictionary {
                 result.add(person);
             }
         }
-
-        if (result.isEmpty()) {
-            throw new IndexOutOfBoundsException("Person not found");
-        }
-
         return result;
     }
 }
