@@ -14,19 +14,17 @@ public class PriorityQueue {
     public void put(Task task) {
         int index = 0;
         for (Task element : tasks) {
-            // тот список уже упорядоченный!
             if (task.getPriority() <= element.getPriority()) {
                 break;
             } else {
                 index++;
-//            if (task.getPriority() > element.getPriority()) {
-//                index++;
             }
         }
         this.tasks.add(index, task);
     }
 
     public Task take() {
+
         return tasks.poll();
     }
 }
