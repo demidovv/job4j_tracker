@@ -1,18 +1,21 @@
 package ru.job4j.tracker;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker {
     /**
-     * Массив для хранения заявок.
+     * Список для хранения заявок.
      */
-    private final Item[] items = new Item[100];
+//    private final Item[] items = new Item[100];
 
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final ArrayList<Item> items = new ArrayList<>();
+//    /**
+//     * Указатель ячейки для новой заявки.
+//     */
+//    private int position = 0;
 
     /**
      * Метод добавления заявки в хранилище
@@ -20,15 +23,17 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(generateId());
-        items[position++] = item;
+//        items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
     /**
      * Метод возвращает копию массива без пустых клеток
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    public ArrayList<Item> findAll() {
+//        return Arrays.copyOf(items, position);
+        return items;
     }
 
     /**
@@ -36,16 +41,23 @@ public class Tracker {
      * @param key
      * @return
      */
-    public Item[] findByName(String key) {
-        Item[] temp = new Item[position];
-        int size = 0;
-
-        for (int i = 0; i < position; i++) {
-            if (items[i].getName().equals(key)) {
-                temp[size++] = items[i];
+    public ArrayList<Item> findByName(String key) {
+//        Item[] temp = new Item[position];
+//        int size = 0;
+//
+//        for (int i = 0; i < position; i++) {
+//            if (items[i].getName().equals(key)) {
+//                temp[size++] = items[i];
+//            }
+//        }
+//        return Arrays.copyOf(temp, size);
+        ArrayList<Item> temp = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                temp.add(item);
             }
         }
-        return Arrays.copyOf(temp, size);
+        return temp;
     }
 
     /**
