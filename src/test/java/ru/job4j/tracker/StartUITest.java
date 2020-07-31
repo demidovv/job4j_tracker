@@ -19,7 +19,8 @@ public class StartUITest {
                 new Exit()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+//        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
     }
 
     @Test
@@ -74,7 +75,9 @@ public class StartUITest {
                     new Exit()
             };
             new StartUI(out).init(in, tracker, actions);
-            assertThat(tracker.findAll()[0].getName(), is(outputName));
+//            assertThat(tracker.findAll()[0].getName(), is(outputName));
+        assertThat(tracker.findAll().get(0).getName(), is(outputName));
+
         }
 
     @Test
@@ -111,8 +114,10 @@ public class StartUITest {
                 new Exit()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findByName(item.getName())[0].getName(), is(outputName));
+//        assertThat(tracker.findByName(item.getName())[0].getName(), is(outputName));
+        assertThat(tracker.findByName(item.getName()).get(0).getName(), is(outputName));
     }
+
 
     @Test
     public void whenExit() {
@@ -126,7 +131,7 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "\nMenu." + System.lineSeparator() +
+                System.lineSeparator() + "Menu." + System.lineSeparator() +
                         "0. Exit" + System.lineSeparator()
         ));
     }

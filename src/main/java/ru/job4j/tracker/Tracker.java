@@ -12,10 +12,10 @@ public class Tracker {
 //    private final Item[] items = new Item[100];
 
     private final ArrayList<Item> items = new ArrayList<>();
-//    /**
-//     * Указатель ячейки для новой заявки.
-//     */
-//    private int position = 0;
+    /**
+     * Указатель ячейки для новой заявки.
+     */
+    private int position = 0;
 
     /**
      * Метод добавления заявки в хранилище
@@ -24,13 +24,14 @@ public class Tracker {
     public Item add(Item item) {
         item.setId(generateId());
 //        items[position++] = item;
-        this.items.add(item);
+        this.items.add(position++, item);
         return item;
     }
 
     /**
      * Метод возвращает копию массива без пустых клеток
      */
+//    public Item[] findAll() {
     public ArrayList<Item> findAll() {
 //        return Arrays.copyOf(items, position);
         return items;
@@ -42,6 +43,7 @@ public class Tracker {
      * @return
      */
     public ArrayList<Item> findByName(String key) {
+//    public Item[] findByName(String key) {
 //        Item[] temp = new Item[position];
 //        int size = 0;
 //
@@ -69,7 +71,7 @@ public class Tracker {
         // Находим индекс
         int index = indexOf(id);
         // Если индекс найден возвращаем item, иначе null
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
 
     /**
@@ -82,7 +84,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             fresh.setId(id);
-            items[index] = fresh;
+            items.set(index, fresh);
         }
         return rsl;
     }
@@ -93,11 +95,18 @@ public class Tracker {
      * @return
      */
     public boolean delete(String id) {
+//        int index = indexOf(id);
+//        boolean rsl = index != -1;
+//        if (rsl) {
+//            System.arraycopy(items, index + 1, items, index, position - index);
+//            items[position - 1] = null;
+//            position--;
+//        }
+//        return rsl;
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
-            System.arraycopy(items, index + 1, items, index, position - index);
-            items[position - 1] = null;
+            items.remove(index);
             position--;
         }
         return rsl;
@@ -121,7 +130,7 @@ public class Tracker {
     private int indexOf(String id) {
         int rsl = -1;
         for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
+            if (items.get(index).getId().equals(id)) {
                 rsl = index;
                 break;
             }
