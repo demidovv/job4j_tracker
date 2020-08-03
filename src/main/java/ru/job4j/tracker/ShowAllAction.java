@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ShowAllAction implements UserAction {
     private final Output out;
@@ -20,7 +20,7 @@ public class ShowAllAction implements UserAction {
 //        for (int i = 0; i < all.length; i++) {
 //            out.println(i + 1 + all[i].toString());
 //        }
-        ArrayList<Item> all = tracker.findAll();
+        List<Item> all = tracker.findAll();
         int i = 0;
         for (Item item : all) {
             out.println(i + 1 + item.toString());
