@@ -14,10 +14,6 @@ public class BankService {
      */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
-//
-//        if (!users.containsKey(user)) {
-//            users.put(user, new ArrayList<Account>());
-//        }
     }
 
     /**
@@ -25,10 +21,12 @@ public class BankService {
      * @param passport
      */
     public void addAccount(String passport, Account account) {
-//        users.putIfAbsent(findByPassport(passport), users.get(findByPassport(passport)).add(account));
-
-        if (!users.get(findByPassport(passport)).contains(account)) {
-            users.get(findByPassport(passport)).add(account);
+        User user = findByPassport(passport);
+        if (user != null) {
+            List accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
+            }
         }
     }
 
@@ -79,7 +77,7 @@ public class BankService {
         boolean rsl = false;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount != null && srcAccount.getBalance() >= amount) {
+        if (srcAccount != null && destAccount != null && srcAccount.getBalance() >= amount) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
             rsl = true;
