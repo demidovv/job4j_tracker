@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -86,5 +88,39 @@ public class TrackerTest {
         String id = bug.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
+    }
+
+    @Test
+    public void whenSortByNameItem() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1");
+        Item item2 = new Item("test2");
+        Item item3 = new Item("test3");
+        tracker.add(item2);
+        tracker.add(item1);
+        tracker.add(item3);
+        List<Item> result = new ArrayList<>();
+        result.add(item1);
+        result.add(item2);
+        result.add(item3);
+        Collections.sort(tracker.findAll(), new SortByNameItem());
+        assertThat(result, is(tracker.findAll()));
+    }
+
+    @Test
+    public void whenReverseSortByNameItem() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1");
+        Item item2 = new Item("test2");
+        Item item3 = new Item("test3");
+        tracker.add(item2);
+        tracker.add(item1);
+        tracker.add(item3);
+        List<Item> result = new ArrayList<>();
+        result.add(item3);
+        result.add(item2);
+        result.add(item1);
+        Collections.sort(tracker.findAll(), new ReverseSortByNameItem());
+        assertThat(result, is(tracker.findAll()));
     }
 }

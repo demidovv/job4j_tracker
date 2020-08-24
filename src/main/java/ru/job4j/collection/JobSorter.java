@@ -7,14 +7,14 @@ import java.util.List;
 public class JobSorter {
     public static void main(String[] args) {
         List<Job> jobs = Arrays.asList(
-                new Job("Fix bugs", 4),
-                new Job("Impl task", 2),
-                new Job("Reboot server", 1)
+                new Job("d. Fix bugs", 4),
+                new Job("a. Impl task", 2),
+                new Job("o. Reboot server", 1)
         );
         System.out.println(jobs);
-        Collections.sort(jobs);
-        System.out.println(jobs);
-        Collections.sort(jobs, new SortByNameJob());
+//        Collections.sort(jobs);
+//        System.out.println(jobs);
+        Collections.sort(jobs, Collections.reverseOrder(new SortByNameJob()));
         System.out.println(jobs);
     }
 }

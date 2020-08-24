@@ -47,4 +47,8 @@ public class Item {
         return Objects.equals(name, item.name);
     }
 
+//    @Override
+//    public int compareTo(Item another) {
+//        return Integer.compare(id, another.id);
+//    }
 }
