@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User implements Comparable<User>{
     private String name;
-    private Integer age;   //    при использовании int метод compareTo выдает ошибку
+    private int age;
 
     public User(String name, int age) {
         this.name = name;
@@ -16,10 +16,9 @@ public class User implements Comparable<User>{
         int result = this.name.compareTo(o.name);
 
         if (result == 0) {
-            result = this.age.compareTo(o.age);
+            result = Integer.compare(this.age, o.age);
         }
-
-        return result;
+          return result;
     }
 
     @Override
