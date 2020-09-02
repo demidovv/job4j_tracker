@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Run {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String petr = "Petr";
         String ivan = "Ivan";
         int rslStr = petr.compareTo(ivan);

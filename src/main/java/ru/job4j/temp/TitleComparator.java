@@ -16,7 +16,7 @@ public class TitleComparator implements Comparator<Film> {
 
     @Override
     public int compare(Film f1, Film f2) {
-        return desc ? f2.getTitle().compareTo(f1.getTitle()) :
-                f1.getTitle().compareTo(f2.getTitle());
+        return desc ? f2.getTitle().compareTo(f1.getTitle())
+                : f1.getTitle().compareTo(f2.getTitle());
     }
 }

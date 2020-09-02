@@ -22,8 +22,8 @@ public class Parentheses {
 
         int count = 0;
         for (int i = 0; i < data.length && count != -1; i++) {
-            count = data[i] == '(' ? count + 1: count;
-            count = data[i] == ')' ? count - 1: count;
+            count = data[i] == '(' ? count + 1 : count;
+            count = data[i] == ')' ? count - 1 : count;
         }
         return count == 0;
     }
